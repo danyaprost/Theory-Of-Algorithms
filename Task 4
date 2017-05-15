@@ -1,0 +1,29 @@
+/*
+ * 2.Найти произведение элементов, кратных 3 в массиве, заданном датчиком случайных чисел на интервале [-28, 27]. Размер произвольный.
+ */
+#include <iostream>
+#include <ctime>
+
+using namespace std;
+
+int main()
+{
+	srand(time(0));
+	int n;
+	cout << "Enter N:";
+	cin >> n;
+	int * mas = new int[n];
+	int prod = 1;
+	for(int i = 0; i < n; i++)
+	{
+		 mas[i] = -28 + (rand() % (int) (27 + 28 + 2));
+	 if(mas[i] %3 == 0)	prod *= mas[i];
+	}
+	cout << "Generated array:" << endl;
+	for(int i = 0; i < n; i++)
+		cout << mas[i] << " ";
+	cout << endl << "Product: " << prod << endl;
+	system("pause.exe");
+
+	delete[] mas;
+}
