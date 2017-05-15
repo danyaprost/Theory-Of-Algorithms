@@ -1,0 +1,46 @@
+/*
+ * 12.	Массив А вводится с клавиатуры. Сформировать новый массив В, состоящий из положительных элементов массива А и  найти в нем наибольший элемент. Размер произвольный
+ */
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	int n;
+	cout << "Enter N:";
+	cin >> n;
+
+	int * masA = new int[n];
+	int positiveCounter = 0;
+	for(int i = 0; i < n; i++)
+	{
+		cout << "A[" << i + 1 << "]: ";
+		cin >> masA[i];
+		if(masA[i] > 0) positiveCounter++;
+	}
+	cout << "array A:" << endl;
+	for(int i = 0; i < n; i++)
+		cout << masA[i] << endl;
+	int * masB = new int[positiveCounter];
+	for(int i = 0, j = 0; i < n; i++)
+	{
+		if(masA[i] > 0)
+		{
+			masB[j] = masA[i];
+			j++;
+		}
+	}
+	cout << endl << "Array B:" << endl;
+	int max = masB[0];
+	for(int i = 0; i < positiveCounter; i++)
+	{
+		cout << masB[i] << endl;
+		if(masB[i] > max) max = masB[i];
+	}
+	cout << "Max in B: " << max << endl;
+	system("pause.exe");
+
+	delete[] masA;
+	delete[] masB;
+}
