@@ -1,0 +1,55 @@
+/*
+ * 19. Ќайти номер строки массива размером ћхN, в котором находитс¤ наибольшее количество четных элементов. Ёлементы задаютс¤ датчиком случайных чисел на интервале [-54;61]
+ */
+ 
+#include <iostream>
+#include <ctime>
+
+using namespace std;
+
+int main()
+{
+	srand(time(0));
+	int n, m;
+	cout << "Enter N and M:";
+	cin >> n >> m;
+	int** mas = new int*[n];
+	for(int i = 0; i < n; i++)
+	{
+		mas[i] = new int[m];
+	}
+	int sum = 0;
+	for(int i = 0; i < n; i++)
+		for(int j = 0; j < m; j++)
+		{
+			 mas[i][j] = -54 + (rand() % (int) (61 + 54 + 2));	
+		}
+	cout << "Generated array :" << endl;
+	for(int i = 0; i < n; i++)
+	{
+		for(int j = 0; j < m; j++)
+		{
+			cout << mas[i][j] << " ";
+		}
+		cout << endl;
+	}
+	int maxOddRow =0, maxOddRowIndex =0;
+	for(int i = 0; i < n; i++)
+	{
+		int thisOddRow = 0;
+		for(int j = 0; j < m; j++)	
+		if(mas[i][j] %2 == 0)thisOddRow++;
+		if(thisOddRow > maxOddRow)
+		{
+			maxOddRow = thisOddRow;
+			maxOddRowIndex = i;
+		}
+	}
+	cout << "First max odd amount row:" << maxOddRowIndex+1 << endl;
+	system("pause.exe");
+	for(int i = 0; i < n; i++)
+	{
+		delete[] mas[i];
+	}
+	delete[] mas;
+}
