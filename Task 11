@@ -1,0 +1,41 @@
+/*
+ * 4.Подсчитать количество четных отрицательных элементов в матрице размером МхN, элементы которой вводятся с клавиатуры. 
+ */
+#include <iostream>
+
+using namespace std;
+
+int main() {
+	int n, m;
+	cout << "Enter N and M:";
+	cin >> n >> m;
+	int** mas = new int*[n];
+	for (int i = 0; i < n; i++)
+	{
+		mas[i] = new int[m];
+	}
+	int negOddCounter = 0;
+	for (int i = 0; i < n; i++)
+		for (int j = 0; j < m; j++)
+		{
+			cout << "mas[" << i << "][" << j << "]: ";
+			cin >> mas[i][j];
+			if (mas[i][j] < 0 && mas[i][j] % 2 == 0) negOddCounter ++;
+		}
+	cout << "Array from memory:" << endl;
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < m; j++)
+		{
+			cout << mas[i][j] << " ";
+		}
+		cout << endl;
+	}
+	cout << "Negative odd amount:" << negOddCounter << endl;
+	system("pause.exe");
+	for (int i = 0; i < n; i++)
+	{
+		delete[] mas[i];
+	}
+	delete[] mas;
+}
