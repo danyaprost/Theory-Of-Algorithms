@@ -1,0 +1,55 @@
+/*
+* 20. Ќайти номер столбца массива размером ћхN, в котором находитс¤ наибольшее количество элементов, кратных 5. Ёлементы задаютс¤ датчиком случайных чисел на интервале [-27;43]
+*/
+
+#include <iostream>
+#include <ctime>
+
+using namespace std;
+
+int main()
+{
+	srand(time(0));
+	int n, m;
+	cout << "Enter N and M:";
+	cin >> n >> m;
+	int** mas = new int*[n];
+	for(int i = 0; i < n; i++)
+	{
+		mas[i] = new int[m];
+	}
+	int sum = 0;
+	for(int i = 0; i < n; i++)
+		for(int j = 0; j < m; j++)
+		{
+			mas[i][j] = -27 + (rand() % (int) (43 + 27 + 2));
+		}
+	cout << "Generated array :" << endl;
+	for(int i = 0; i < n; i++)
+	{
+		for(int j = 0; j < m; j++)
+		{
+			cout << mas[i][j] << " ";
+		}
+		cout << endl;
+	}
+	int maxOddCol = 0, maxOddColIndex = 0;
+	for(int i = 0; i < n; i++)
+	{
+		int thisOddCol = 0;
+		for(int j = 0; j < m; j++)
+			if(mas[j][i] % 5 == 0)thisOddCol++;
+		if(thisOddCol > maxOddCol)
+		{
+			maxOddCol = thisOddCol;
+			maxOddColIndex = i;
+		}
+	}
+	cout << "First max odd amount column:" << maxOddColIndex + 1 << endl;
+	system("pause.exe");
+	for(int i = 0; i < n; i++)
+	{
+		delete[] mas[i];
+	}
+	delete[] mas;
+}
