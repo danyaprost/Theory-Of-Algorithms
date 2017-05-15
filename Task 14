@@ -1,0 +1,44 @@
+/*
+ * 2. Подсчитать количество отрицательных элементов в каждой строке матрицы размером МхN, элементы которой задаются с помощью датчика случайных чисел на интервале [-35; 65]
+ */
+#include <iostream>
+#include <ctime>
+
+using namespace std;
+
+int main()
+{
+	srand(time(0));
+	int n, m;
+	cout << "Enter N and M:";
+	cin >> n >> m;
+	int** mas = new int*[n];
+	for(int i = 0; i < n; i++)
+	{
+		mas[i] = new int[m];
+	}
+
+	for(int i = 0; i < n; i++)
+		for(int j = 0; j < m; j++)
+		{
+			mas[i][j] = -35 + (rand() % (int) (65 + 35 + 2));
+		}
+	cout << "Array :" << endl;
+	for(int i = 0; i < n; i++)
+	{
+		int negCounter = 0;
+		for(int j = 0; j < m; j++)
+		{
+			if(mas[i][j] < 0) negCounter++;
+			cout << mas[i][j] << " ";
+		}
+		cout << " Negative amount: " << negCounter << endl;
+	}
+	system("pause.exe");
+	for(int i = 0; i < n; i++)
+	{
+		delete[] mas[i];
+	}
+	delete[] mas;
+}
+Blog  
