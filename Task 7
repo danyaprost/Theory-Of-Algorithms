@@ -1,0 +1,43 @@
+/*
+ * 9.	Упорядочить данную последовательность по убыванию. Массив задан датчиком случайных чисел на интервале [-54, 33]. Размер произвольный.
+ */
+
+#include <iostream>
+#include <ctime>
+
+using namespace std;
+
+int main()
+{
+	srand(time(0));
+	int n;
+	cout << "Enter N:";
+	cin >> n;
+	
+	int * mas = new int[n];
+	for(int i = 0; i < n; i++)
+	{
+		mas[i] = -54 + (rand() % (int) (33 + 54 + 2));
+	}
+	cout << "Generated array:" << endl;
+	for(int i = 0; i < n; i++)
+		cout << mas[i] << endl;
+	cout <<endl << "Sorted array:" << endl;
+	for(int i = 0; i < (n - 1); i++)
+	{
+		for(int j = 0; j < n - i - 1; j++)
+		{
+			if(mas[j] < mas[j + 1])
+			{
+				int temp = mas[j];
+				mas[j] = mas[j + 1];
+				mas[j + 1] = temp;
+			}
+		}
+	}
+	for(int i = 0; i < n; i++)
+		cout << mas[i] << endl;
+	system("pause.exe");
+
+	delete[] mas;
+}
