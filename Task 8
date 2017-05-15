@@ -1,0 +1,42 @@
+/*
+ * Массив задан датчиком случайных чисел на интервале [-31, 45]. Сформировать новый массив В, состоящий из нечетных элементов массива А. Размер произвольный.
+ */
+#include <iostream>
+#include <ctime>
+
+using namespace std;
+
+int main()
+{
+	srand(time(0));
+	int n;
+	cout << "Enter N:";
+	cin >> n;
+	int evenCounter = 0;
+	int * masA = new int[n];
+	for(int i = 0; i < n; i++)
+	{
+		masA[i] = -31 + (rand() % (int) (31 + 45 + 2));
+		if(masA[i] % 2 != 0) evenCounter++;
+	}
+	cout << "Generated array:" << endl;
+	for(int i = 0; i < n; i++)
+		cout << masA[i] << endl;
+	int * masB = new int[evenCounter];
+	for(int i = 0, j = 0; i < n; i++)
+	{
+		if(masA[i] % 2 != 0)
+		{
+			masB[j] = masA[i];
+			j++;
+		}
+	}
+	cout << endl << "Array B:" << endl;
+	for(int i = 0; i < evenCounter; i++)
+		cout << masB[i] << endl;
+	
+	system("pause.exe");
+
+	delete[] masA;
+	delete[] masB;
+}
