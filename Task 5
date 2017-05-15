@@ -1,0 +1,39 @@
+/*
+ * 6. Найти средне арифметическое элементов последовательности, превосходящих некоторое число С.
+ *  Массив задан датчиком случайных чисел на интервале [-44, 35]. Размер произвольный. Значение С вводится с клавиатуры.
+ */
+#include <iostream>
+#include <ctime>
+
+using namespace std;
+
+int main()
+{
+	srand(time(0));
+	int n,c;
+	cout << "Enter N:";
+	cin >> n;
+	cout << "Enter C:";
+	cin >> c;
+	int * mas = new int[n];
+	int sum = 0;
+	int count = 0;
+	for(int i = 0; i < n; i++)
+	{
+		mas[i] = -44 + (rand() % (int) (35 + 44 + 2));
+		if(mas[i] > c)
+		{
+			sum += mas[i];
+			count++;
+		}
+	}
+	cout << "Generated array:" << endl;
+	for(int i = 0; i < n; i++)
+		cout << mas[i] << " ";
+	if(count == 0) cout << "No number more than " << c << " found!" << endl;
+	else
+	cout << endl << "Average of number more than: " << c <<": " << sum/count << endl;
+	system("pause.exe");
+
+	delete[] mas;
+}
