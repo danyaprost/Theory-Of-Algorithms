@@ -1,0 +1,27 @@
+/*
+ * 1.	Массив А вводится с клавиатуры. Найти сумму его элементов. Размер произвольный
+ */
+#include <iostream>
+
+using namespace std;
+
+int main() {
+	int n;
+	cout << "Enter N:";
+	cin >> n ;
+	int * mas = new int[n];
+	int sum = 0;
+	for(int i = 0; i < n; i++)
+	{
+		cout << "mas[" << i+1 << "]: ";
+		cin >> mas[i];
+		sum += mas[i];
+	}
+	cout << "Array from memory:" << endl;
+	for (int i = 0; i < n; i++)		
+			cout << mas[i] << " ";	
+	cout << "Sum:" << sum << endl;
+	system("pause.exe");
+	
+	delete[] mas;
+}
